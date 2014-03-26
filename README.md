@@ -18,12 +18,11 @@ Quick Start
 
 This class is created to provide the abstraction for three.js object initialization. 
 
-##### 1. Set up for the scene, renderer, camera, light, and directional light.##### 
-
 * This code creates the new instance/object of the ThreeJSObject.  
 ```javascript
 var threeJSObject = new ThreeJSObject();
-``` 
+```
+##### 1. Set up for the scene, renderer, camera, light, and directional light.
 
 * Create the scene.
 ```javascript
@@ -86,5 +85,49 @@ this.initialize = function(){
 }
 ```
 
+##### 2. Set up the mouse controL. 
 
+* Create the OrbitControls so that we can pan around with the mouse.
+```javascript
+this.createOrbitControl = function() {
+	this.controls = new THREE.OrbitControls(this.camera, this.renderer.domElement);
+	this.controls.minDistance = 0.7;
+	this.controls.maxDistance = 10;
+}
+```
 
+##### 3. Render the scene set up and update the created mouse control.
+* Render scene and update orbit control.
+```javascript
+this.renderScene = function() {
+	this.renderer.render(this.scene, this.camera);
+	this.controls.update();
+	requestAnimationFrame($.proxy(this.renderScene, this));
+}
+```
+
+##### 4. Provide the functions to interact with the 3d model.
+
+* Zoom in/out the model.
+```javascript
+this.zoomModel = function(scale, callbackFunction) {
+	zoom();
+	function zoom(){
+		zoomAttempt+=1;
+		if(scale>0){
+			self.controls.dollyOut(scale);	
+		}else{
+			self.controls.dollyIn(-(scale));
+		}
+
+		if(zoomAttempt<self.ZOOM_ANIMATION_LENGTH){
+			requestAnimationFrame(zoom);	
+		}else{
+			zoomAttempt = 0;
+			if(typeof callbackFunction == 'function'){
+				callbackFunction();	
+			}
+		}
+	}
+}
+```

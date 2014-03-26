@@ -63,10 +63,7 @@ this.createCamera = function() {
 ```javascript
 this.createDirectionalLight = function() {
 	var directionalLight = new THREE.DirectionalLight(0xeeeeee);
-	directionalLight.position.x = 100;
-	directionalLight.position.y = 100;
-	directionalLight.position.z = 100;
-	directionalLight.position.normalize();
+	....
 	this.scene.add(directionalLight);
 }
 ```
@@ -91,8 +88,7 @@ this.initialize = function(){
 ```javascript
 this.createOrbitControl = function() {
 	this.controls = new THREE.OrbitControls(this.camera, this.renderer.domElement);
-	this.controls.minDistance = 0.7;
-	this.controls.maxDistance = 10;
+	....
 }
 ```
 
@@ -111,23 +107,24 @@ this.renderScene = function() {
 * Zoom in/out the model.
 ```javascript
 this.zoomModel = function(scale, callbackFunction) {
-	zoom();
-	function zoom(){
-		zoomAttempt+=1;
-		if(scale>0){
-			self.controls.dollyOut(scale);	
-		}else{
-			self.controls.dollyIn(-(scale));
-		}
-
-		if(zoomAttempt<self.ZOOM_ANIMATION_LENGTH){
-			requestAnimationFrame(zoom);	
-		}else{
-			zoomAttempt = 0;
-			if(typeof callbackFunction == 'function'){
-				callbackFunction();	
-			}
-		}
-	}
+	....
+		// things to do zooming the model.
 }
 ```
+
+* Rotate against Y axis.
+```javascript
+this.rotateAgainstYAxis = function(degree) {
+	....
+		// things to do rotation of the model.
+}
+```
+
+* Translate the 3d model in Y axis.
+```javascript
+this.translateY = function(distanceTranslation) {
+	....
+		// things to do translation of the model.
+}
+```
+

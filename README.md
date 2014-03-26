@@ -6,6 +6,11 @@ Description
 
 Best Buy 3D WebGL POC is a modern project of web retail application that provides the 3D display that is implemented against Best Buy website pages. The 3D display of the product lets the user to see the detail of the product in 3D dimension. The functionality provided also lets the user to interact with the product interactively. It uses [three.js](https://github.com/mrdoob/three.js/) as the WebGL framework and [Collada](https://collada.org/) file as the model asset.
 
+Browser Compatibility
+---------------------
+
+This project tested against Chrome (Version 33.0.1750.152), Firefox (Version 27.0.1), and Safari (Version 6.0.5) desktop browsers.
+
 Quick Start
 -----------
 
@@ -82,7 +87,7 @@ this.initialize = function(){
 }
 ```
 
-##### 2. Set up the mouse controL. 
+##### 2. Set up the mouse control. 
 
 * Create the OrbitControls so that we can pan around with the mouse.
 ```javascript
@@ -130,7 +135,7 @@ this.translateY = function(distanceTranslation) {
 
 ##### 5. Handle the animation. Keyframe animation is used in this project.
 
-### Collada Loader and Collada Model ###
+### Collada Loader and Collada Model (.dae) ###
 
 * This code is used to load the collada model and add it to the scene.
 ```javascript
@@ -142,5 +147,3 @@ function loadColladaModel(modelUrl, initialLoadScale, initialLoadPosition) {
 	});
 }
 ```
-
-

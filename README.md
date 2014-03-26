@@ -16,21 +16,22 @@ Quick Start
 
 ### ThreeJSObject.js ###
 
-This class is created to provide the abstraction for object initialization. 
+This class is created to provide the abstraction for three.js object initialization. 
 
 * This code creates the new instance/object of the ThreeJSObject.  
-```html
+```javascript
 var threeJSObject = new ThreeJSObject();
 ``` 
 
 * Create the scene.
-```html
+```javascript
 this.createScene = function() {
 	this.scene = new THREE.Scene();
 }
+```
 
 * Create a renderer and set its size.
-```html
+```javascript
 this.createRenderer = function() {
 	this.renderer = new THREE.WebGLRenderer({
 		antialias : true
@@ -40,12 +41,14 @@ this.createRenderer = function() {
 ```  
 
 * Create a camera, zoom it out from the model a bit, and add it to the scene.
-```html
+```javascript
 this.createCamera = function() {
 	this.camera = new THREE.PerspectiveCamera(CAMERA_FOV, CAMERA_ASPECT, CAMERA_NEAR, CAMERA_FAR);
 	this.camera.position.set(0, 0, 3);
 	this.scene.add(this.camera);
 }
-```  
+```
+
+  
 
 

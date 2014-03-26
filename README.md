@@ -128,3 +128,19 @@ this.translateY = function(distanceTranslation) {
 }
 ```
 
+##### 5. Handle the animation. Keyframe animation is used in this project.
+
+### Collada Loader and Collada Model ###
+
+* This code is used to load the collada model and add it to the scene.
+```javascript
+function loadColladaModel(modelUrl, initialLoadScale, initialLoadPosition) {
+	var colladaLoader = new THREE.ColladaLoader();
+	colladaLoader.load(modelUrl, function colladaReady(colladaGeometry) {
+		....
+		threeJSObject.scene.add(model);
+	});
+}
+```
+
+

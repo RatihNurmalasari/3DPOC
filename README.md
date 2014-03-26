@@ -4,7 +4,7 @@ Best Buy 3D WebGL POC
 Description
 -----------
 
-Best Buy 3D WebGL POC is a modern project of web retail application that provides the 3D display that is implemented against Best Buy website pages. The 3D display of the product lets the user to see the detail of the product in 3D dimension. The functionality provided also lets the user to interact with the product interactively. It uses [three.js](https://github.com/mrdoob/three.js/) as the WebGL framework and [Collada](https://collada.org/) file as the model.
+Best Buy 3D WebGL POC is a modern project of web retail application that provides the 3D display that is implemented against Best Buy website pages. The 3D display of the product lets the user to see the detail of the product in 3D dimension. The functionality provided also lets the user to interact with the product interactively. It uses [three.js](https://github.com/mrdoob/three.js/) as the WebGL framework and [Collada](https://collada.org/) file as the model asset.
 
 Quick Start
 -----------
@@ -17,6 +17,8 @@ Quick Start
 ### ThreeJSObject.js ###
 
 This class is created to provide the abstraction for three.js object initialization. 
+
+##### 1. Set up for the scene, renderer, camera, light, and directional light.##### 
 
 * This code creates the new instance/object of the ThreeJSObject.  
 ```javascript
@@ -49,6 +51,40 @@ this.createCamera = function() {
 }
 ```
 
+* Create a light, set its position, and add it to the scene.
+```javascript
+this.createCamera = function() {
+	this.camera = new THREE.PerspectiveCamera(CAMERA_FOV, CAMERA_ASPECT, CAMERA_NEAR, CAMERA_FAR);
+	this.camera.position.set(0, 0, 3);
+	this.scene.add(this.camera);
+}
+```
   
+* Create a directional light, set its position, and add it to the scene.
+```javascript
+this.createDirectionalLight = function() {
+	var directionalLight = new THREE.DirectionalLight(0xeeeeee);
+	directionalLight.position.x = 100;
+	directionalLight.position.y = 100;
+	directionalLight.position.z = 100;
+	directionalLight.position.normalize();
+	this.scene.add(directionalLight);
+}
+```
+
+* Set up for the scene, renderer, camera, light, and directional light.
+```javascript
+this.initialize = function(){
+	this.createScene();
+	this.createRenderer();
+	this.createCamera();
+	this.onResizeRenderer();
+	this.createLight();
+	this.createDirectionalLight();
+	this.createOrbitControl();
+	this.camera.position.set(-2, 2, 3);
+}
+```
+
 
 
